@@ -60,6 +60,11 @@ module.exports.setDefaultFormat = function(format) {
     dateFilterDefaultFormat = format;
 };
 
+// set default format locale
+module.exports.setDefaultFormatLocale = function(locale) {
+  dateFilterDefaultFormatLocale = locale;
+}
+
 // install the filter to nunjucks environment
 module.exports.install = function(env, customName) {
     (env || nunjucks.configure()).addFilter(customName || 'date', dateFilter);
