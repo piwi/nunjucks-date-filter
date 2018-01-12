@@ -14,6 +14,7 @@ var nlib        = require('nunjucks/src/lib');
 
 // default default format (ISO 8601)
 var dateFilterDefaultFormat = null;
+var dateFilterDefaultFormatLocale = null;
 
 // a date filter for Nunjucks
 // usage: {{ my_date | date(format) }}
@@ -36,6 +37,7 @@ function dateFilter(date, format)
                 result = obj[format].apply(obj, args.slice(2));
             } else {
                 if (dateFilterDefaultFormat!==null) {
+                    dateFilterDefaultFormatLocale && obj.locale(dateFilterDefaultFormatLocale);
                     result = obj.format(format || dateFilterDefaultFormat);
                 } else {
                     result = obj.format(format);
